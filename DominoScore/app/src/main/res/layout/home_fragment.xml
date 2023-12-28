@@ -11,5 +11,40 @@
         android:layout_height="match_parent"
         android:padding="16dp">
 
+        <TextView
+            android:id="@+id/home_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Domino Score"
+            android:textColor="@color/cardview_dark_background"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_start_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Começar"
+            app:layout_constraintEnd_toEndOf="@+id/home_title"
+            app:layout_constraintStart_toStartOf="@id/home_title"
+            app:layout_constraintTop_toBottomOf="@id/home_title" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_home_game_history"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:text="Histórico"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/button_home_start_score"
+            app:layout_constraintStart_toStartOf="@id/button_home_start_score"
+            app:layout_constraintTop_toBottomOf="@id/button_home_start_score" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

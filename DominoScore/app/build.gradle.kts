@@ -36,19 +36,40 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
+    implementation(Libraries.UI.coreKtx)
+    implementation(Libraries.UI.appcompat)
+    implementation(Libraries.UI.material)
+    implementation(Libraries.UI.constraintlayout)
+    implementation(Libraries.UI.navigationFragment)
+    implementation(Libraries.UI.navigation)
 
+    //Unit Tests
+    testImplementation(Libraries.Test.core)
+    testImplementation(Libraries.Test.junit)
+    testImplementation(Libraries.Test.junitExt)
+    testImplementation(Libraries.Test.robolectric)
+    testImplementation(Libraries.Test.truth)
+    testImplementation(Libraries.Test.mockk)
+    testImplementation(Libraries.Test.espresso)
+    testImplementation(Libraries.Test.espressoIntents)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //Instrumented Tests
+    androidTestImplementation(Libraries.Test.core)
+    androidTestImplementation(Libraries.Test.junit)
+    androidTestImplementation(Libraries.Test.junitExt)
+    androidTestImplementation(Libraries.Test.runner)
+    androidTestImplementation(Libraries.Test.rules)
+    androidTestImplementation(Libraries.Test.truth)
+    androidTestImplementation(Libraries.Test.mockk)
+    androidTestImplementation(Libraries.Test.espresso)
+    androidTestUtil(Libraries.Test.orchestrator)
 }
