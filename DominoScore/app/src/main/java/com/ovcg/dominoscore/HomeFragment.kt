@@ -29,6 +29,14 @@ class HomeFragment : Fragment() {
 
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.buttonHomeStartScore.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_ChooseFragment)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

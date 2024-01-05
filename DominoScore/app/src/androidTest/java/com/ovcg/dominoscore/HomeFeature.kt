@@ -1,6 +1,7 @@
 package com.ovcg.dominoscore
 
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
@@ -27,5 +28,12 @@ class HomeFeature {
         onView(withId(R.id.button_home_start_score)).check(matches(isDisplayed()))
 
         onView(withId(R.id.button_home_game_history)).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun navigateToStartScreen() {
+        onView(withId(R.id.button_home_start_score)).perform(click())
+
+        onView(withText("Escolha sua dupla")).check(matches(isDisplayed()))
     }
 }
