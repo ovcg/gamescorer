@@ -35,6 +35,15 @@ class StartGameFeature : BaseUITest() {
             .check(matches(isDisplayed()))
     }
 
+    @Test
+    fun displayLastGamesWithPartners() {
+        navigateToStartGameScreen()
+        onView(withId(R.id.button_last_games))
+            .perform(click())
+        onView(withText("Últimos jogos"))
+            .check(matches(isDisplayed()))
+    }
+
     private fun fillFields() {
         onView(withId(R.id.edt_first_player))
             .check(matches(isDisplayed()))

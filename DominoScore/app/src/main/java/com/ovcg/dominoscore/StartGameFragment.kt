@@ -33,6 +33,10 @@ class StartGameFragment : Fragment() {
             findNavController().navigate(R.id.action_StartGameFragment_to_GameScoreFragment)
         }
 
+        binding.buttonLastGames.setOnClickListener {
+            LastGamesListDialogFragment().show(parentFragmentManager, "list_of_games")
+        }
+
     }
 
     override fun onDestroyView() {
