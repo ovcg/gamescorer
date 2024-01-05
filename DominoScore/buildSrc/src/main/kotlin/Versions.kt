@@ -11,6 +11,7 @@ object Versions {
     object Test {
         val core: String = "1.5.0"
         val coreTesting: String = "2.2.0"
+        val coroutines: String = "1.6.4"
         val junit: String = "4.13.1"
         val junitExt: String = "1.1.5"
         val runner: String = "1.5.2"

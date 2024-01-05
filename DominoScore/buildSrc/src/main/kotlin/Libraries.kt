@@ -23,6 +23,7 @@ object Libraries {
     object Test {
         val core: String = "androidx.test:core:${Versions.Test.core}"
         val coreTesting: String = "androidx.arch.core:core-testing:${Versions.Test.coreTesting}"
+        val coroutines: String = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.coroutines}"
         val junit: String = "junit:junit:${Versions.Test.junit}"
         val junitExt: String = "androidx.test.ext:junit:${Versions.Test.junitExt}"
         val runner: String = "androidx.test:runner:${Versions.Test.runner}"

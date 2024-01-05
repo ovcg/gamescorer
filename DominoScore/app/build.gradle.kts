@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -71,6 +73,8 @@ dependencies {
     implementation(Libraries.Core.viewmodel)
     implementation(Libraries.Core.livedata)
     implementation(Libraries.Core.lifecycle)
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
     //UI
     implementation(Libraries.UI.coreKtx)
@@ -89,6 +93,8 @@ dependencies {
     testImplementation(Libraries.Test.truth)
     testImplementation(Libraries.Test.mockk)
     testImplementation(Libraries.Test.espresso)
+    testImplementation(Libraries.Test.coroutines)
+    kaptTest("com.google.dagger:hilt-android-compiler:2.48")
 
     //Instrumented Tests
     androidTestImplementation(Libraries.Test.junitExt)
@@ -96,4 +102,6 @@ dependencies {
     androidTestImplementation(Libraries.Test.rules)
     androidTestImplementation(Libraries.Test.mockk)
     androidTestImplementation(Libraries.Test.espresso)
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.48")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.44")
 }
