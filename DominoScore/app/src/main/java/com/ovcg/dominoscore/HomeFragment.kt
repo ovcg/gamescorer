@@ -35,6 +35,10 @@ class HomeFragment : Fragment() {
         binding.buttonHomeStartScore.setOnClickListener {
             findNavController().navigate(R.id.action_HomeFragment_to_ChooseFragment)
         }
+
+        binding.buttonHomeGameHistory.setOnClickListener {
+            findNavController().navigate(R.id.action_HomeFragment_to_GameHistoryFragment)
+        }
     }
 
     override fun onDestroyView() {

@@ -6,10 +6,9 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
-import androidx.test.rule.ActivityTestRule
-import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,7 +18,7 @@ import org.junit.runner.RunWith
 class HomeFeature {
 
     @get:Rule
-    val mActivityRule = ActivityTestRule(MainActivity::class.java)
+    val mActivityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
     fun displayTitleAndHomeButtons() {
@@ -35,5 +34,12 @@ class HomeFeature {
         onView(withId(R.id.button_home_start_score)).perform(click())
 
         onView(withText("Escolha sua dupla")).check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun navigateToHistoryScreen() {
+        onView(withId(R.id.button_home_game_history)).perform(click())
+
+        onView(withText("Histórico de partidas")).check(matches(isDisplayed()))
     }
 }

@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_ChooseFragment"
             app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_GameHistoryFragment"
+            app:destination="@id/gameHistoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -25,4 +28,9 @@
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/gameHistoryFragment"
+        android:name="com.ovcg.dominoscore.GameHistoryFragment"
+        android:label="game_history_fragment"
+        tools:layout="@layout/game_history_fragment" />
 </navigation>
