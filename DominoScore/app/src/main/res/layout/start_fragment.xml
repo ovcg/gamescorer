@@ -64,5 +64,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edt_third_player" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_go_to_game_score"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Começar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edt_fourth_player"
+            app:layout_constraintStart_toStartOf="@+id/edt_fourth_player"
+            app:layout_constraintTop_toBottomOf="@+id/edt_fourth_player" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

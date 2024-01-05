@@ -2,6 +2,7 @@ package com.ovcg.dominoscore.startgame
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
@@ -21,6 +22,20 @@ class StartGameFeature : BaseUITest() {
     @Test
     fun displayFieldsAndFillWithPlayersNames() {
         navigateToStartGameScreen()
+        fillFields()
+    }
+
+    @Test
+    fun navigateToGameScoreAfterFillingTheFields() {
+        navigateToStartGameScreen()
+        fillFields()
+        onView(withId(R.id.button_go_to_game_score))
+            .perform(click())
+        onView(withId(R.id.game_score_root))
+            .check(matches(isDisplayed()))
+    }
+
+    private fun fillFields() {
         onView(withId(R.id.edt_first_player))
             .check(matches(isDisplayed()))
             .perform(typeText("Player1")).check(matches(withText("Player1")))

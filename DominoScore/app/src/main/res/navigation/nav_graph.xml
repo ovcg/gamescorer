@@ -27,10 +27,18 @@
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_StartGameFragment_to_GameScoreFragment"
+            app:destination="@id/gameScoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameHistoryFragment"
         android:name="com.ovcg.dominoscore.GameHistoryFragment"
         android:label="game_history_fragment"
         tools:layout="@layout/game_history_fragment" />
+    <fragment
+        android:id="@+id/gameScoreFragment"
+        android:name="com.ovcg.dominoscore.GameScoreFragment"
+        android:label="game_score_fragment"
+        tools:layout="@layout/game_score_fragment" />
 </navigation>
