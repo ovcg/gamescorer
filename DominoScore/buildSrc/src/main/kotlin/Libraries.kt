@@ -1,5 +1,14 @@
 object Libraries {
 
+    object Core {
+        val coroutines: String = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Core.coroutines}"
+        val coroutinesCore: String = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Core.coroutinesCore}"
+        val viewmodel: String = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Core.viewmodel}"
+        val livedata: String = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Core.livedata}"
+        val kotlinStd: String = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Core.kotlinStd}"
+        val lifecycle: String = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Core.lifecycle}"
+    }
+
     object UI {
         val coreKtx: String = "androidx.core:core-ktx:${Versions.UI.core}"
         val appcompat: String = "androidx.appcompat:appcompat:${Versions.UI.appcompat}"
@@ -13,6 +22,7 @@ object Libraries {
 
     object Test {
         val core: String = "androidx.test:core:${Versions.Test.core}"
+        val coreTesting: String = "androidx.arch.core:core-testing:${Versions.Test.coreTesting}"
         val junit: String = "junit:junit:${Versions.Test.junit}"
         val junitExt: String = "androidx.test.ext:junit:${Versions.Test.junitExt}"
         val runner: String = "androidx.test:runner:${Versions.Test.runner}"

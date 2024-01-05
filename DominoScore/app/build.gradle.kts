@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -15,6 +16,9 @@ android {
         versionName = Configs.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -27,24 +31,48 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
+    }
+    testOptions {
+        animationsDisabled = true
+        unitTests.apply {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
     }
     buildFeatures {
         viewBinding = true
     }
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1,DEPENDENCIES,LICENSE,NOTICE,NOTICE.txt,LICENSE.txt,LICENSE.md}"
         }
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "11"
     }
 }
 
 dependencies {
+    //Core
+    implementation(Libraries.Core.kotlinStd)
+    implementation(Libraries.Core.coroutines)
+    implementation(Libraries.Core.coroutinesCore)
+    implementation(Libraries.Core.viewmodel)
+    implementation(Libraries.Core.livedata)
+    implementation(Libraries.Core.lifecycle)
 
+    //UI
     implementation(Libraries.UI.coreKtx)
     implementation(Libraries.UI.appcompat)
     implementation(Libraries.UI.material)
@@ -54,22 +82,18 @@ dependencies {
 
     //Unit Tests
     testImplementation(Libraries.Test.core)
+    testImplementation(Libraries.Test.coreTesting)
     testImplementation(Libraries.Test.junit)
     testImplementation(Libraries.Test.junitExt)
     testImplementation(Libraries.Test.robolectric)
     testImplementation(Libraries.Test.truth)
     testImplementation(Libraries.Test.mockk)
     testImplementation(Libraries.Test.espresso)
-    testImplementation(Libraries.Test.espressoIntents)
 
     //Instrumented Tests
-    androidTestImplementation(Libraries.Test.core)
-    androidTestImplementation(Libraries.Test.junit)
     androidTestImplementation(Libraries.Test.junitExt)
     androidTestImplementation(Libraries.Test.runner)
     androidTestImplementation(Libraries.Test.rules)
-    androidTestImplementation(Libraries.Test.truth)
     androidTestImplementation(Libraries.Test.mockk)
     androidTestImplementation(Libraries.Test.espresso)
-    androidTestUtil(Libraries.Test.orchestrator)
 }
