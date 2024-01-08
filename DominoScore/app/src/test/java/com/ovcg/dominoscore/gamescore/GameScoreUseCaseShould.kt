@@ -4,8 +4,10 @@ import com.ovcg.dominoscore.utils.BaseUnitTest
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class GameScoreUseCaseShould : BaseUnitTest() {
@@ -13,10 +15,11 @@ class GameScoreUseCaseShould : BaseUnitTest() {
     private val repository: GameScoreRepository = mockk()
     private val useCase = GameScoreUseCase(repository)
     private val games: List<Game> = mockk()
+    private val exception = RuntimeException("Something went wrong")
 
     @Test
     fun getLastGamesListFromRepository() {
-        coEvery { repository.getLastGames() } returns flow { Result.success(games) }
+        mockSuccessfulCase()
 
         runBlocking {
             useCase.getLastGames()
@@ -27,5 +30,29 @@ class GameScoreUseCaseShould : BaseUnitTest() {
         }
     }
 
+    @Test
+    fun emitLastGamesListFromRepository() {
+        mockSuccessfulCase()
+
+        runBlocking {
+            val actual = useCase.getLastGames()
+
+            assertEquals(games, actual.first().getOrNull())
+        }
+    }
+
+    @Test
+    fun propagateErrorWhenGetList() {
+        coEvery { repository.getLastGames() } returns flow { emit(Result.failure(exception)) }
+
+        runBlocking {
+            assertEquals(exception, useCase.getLastGames().first().exceptionOrNull())
+        }
+
+    }
+
+    private fun mockSuccessfulCase() {
+        coEvery { repository.getLastGames() } returns flow { emit(Result.success(games)) }
+    }
 
 }
