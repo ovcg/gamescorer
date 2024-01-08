@@ -6,9 +6,9 @@ import androidx.lifecycle.liveData
 
 class GameScoreViewModel(private val useCase: GameScoreUseCase) : ViewModel() {
 
-    val players = liveData {
+    val games = liveData {
         emitSource(
-            useCase.getLastPlayers().asLiveData()
+            useCase.getLastGames().asLiveData()
         )
     }
 }

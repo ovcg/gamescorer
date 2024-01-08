@@ -13,17 +13,17 @@ class GameScoreViewModelShould : BaseUnitTest() {
 
     private var useCase: GameScoreUseCase = mockk()
     private lateinit var viewModel: GameScoreViewModel
-    private val lastPlayers: List<Player> = mockk()
-    private val expected = Result.success(lastPlayers)
-
+    private val lastGames: List<Game> = mockk()
+    private val expected = Result.success(lastGames)
+    private val exception = RuntimeException("Something went wrong")
     @Test
-    fun getLastPlayersFromDatabase() {
+    fun getLastGamesFromDatabase() {
         viewModel = mockSuccessfulCase()
 
-        viewModel.players.getValueForTest()
+        viewModel.games.getValueForTest()
 
         coVerify(exactly = 1) {
-            useCase.getLastPlayers()
+            useCase.getLastGames()
         }
     }
 
@@ -31,13 +31,24 @@ class GameScoreViewModelShould : BaseUnitTest() {
     fun emitsListFromDataBase() {
         viewModel = mockSuccessfulCase()
 
-        viewModel.players.getValueForTest()
+        viewModel.games.getValueForTest()
 
-        assertEquals(expected, viewModel.players.getValueForTest())
+        assertEquals(expected, viewModel.games.getValueForTest())
+    }
+
+    @Test
+    fun emitsErrorWhenGetListOfGames() {
+        coEvery { useCase.getLastGames() } returns flow { emit(Result.failure(exception)) }
+        viewModel = GameScoreViewModel(useCase)
+
+        viewModel.games.getValueForTest()
+
+        assertEquals(exception, viewModel.games.getValueForTest()!!.exceptionOrNull())
+
     }
 
     private fun mockSuccessfulCase(): GameScoreViewModel {
-        coEvery { useCase.getLastPlayers() } returns flow { emit(Result.success(lastPlayers))}
+        coEvery { useCase.getLastGames() } returns flow { emit(Result.success(lastGames))}
         return GameScoreViewModel(useCase)
     }
 }
