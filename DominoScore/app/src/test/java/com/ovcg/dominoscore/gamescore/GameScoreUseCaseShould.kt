@@ -42,7 +42,7 @@ class GameScoreUseCaseShould : BaseUnitTest() {
     }
 
     @Test
-    fun propagateErrorWhenGetList() {
+    fun propagateErrorWhenGetGamesList() {
         coEvery { repository.getLastGames() } returns flow { emit(Result.failure(exception)) }
 
         runBlocking {
