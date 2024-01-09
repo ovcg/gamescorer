@@ -1,5 +1,8 @@
 package com.ovcg.dominoscore.gamescore
 
+import com.ovcg.dominoscore.presentation.gamescore.Game
+import com.ovcg.dominoscore.data.GameScoreRepository
+import com.ovcg.dominoscore.domain.GameScoreUseCase
 import com.ovcg.dominoscore.utils.BaseUnitTest
 import io.mockk.coEvery
 import io.mockk.coVerify

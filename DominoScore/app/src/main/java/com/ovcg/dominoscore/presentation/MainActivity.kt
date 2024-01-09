@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore
+package com.ovcg.dominoscore.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

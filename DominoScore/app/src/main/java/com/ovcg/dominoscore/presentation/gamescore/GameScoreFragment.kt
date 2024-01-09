@@ -1,10 +1,11 @@
-package com.ovcg.dominoscore
+package com.ovcg.dominoscore.presentation.gamescore
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.ovcg.dominoscore.R
 
 class GameScoreFragment : Fragment() {
 

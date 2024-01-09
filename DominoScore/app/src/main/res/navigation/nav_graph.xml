@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.ovcg.dominoscore.HomeFragment"
+        android:name="com.ovcg.dominoscore.presentation.home.HomeFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/home_fragment">
 
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.ovcg.dominoscore.StartGameFragment"
+        android:name="com.ovcg.dominoscore.presentation.gamescore.StartGameFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/start_fragment">
 
@@ -33,12 +33,12 @@
     </fragment>
     <fragment
         android:id="@+id/gameHistoryFragment"
-        android:name="com.ovcg.dominoscore.GameHistoryFragment"
+        android:name="com.ovcg.dominoscore.presentation.gamescore.GameHistoryFragment"
         android:label="game_history_fragment"
         tools:layout="@layout/game_history_fragment" />
     <fragment
         android:id="@+id/gameScoreFragment"
-        android:name="com.ovcg.dominoscore.GameScoreFragment"
+        android:name="com.ovcg.dominoscore.presentation.gamescore.GameScoreFragment"
         android:label="game_score_fragment"
         tools:layout="@layout/game_score_fragment" />
 </navigation>

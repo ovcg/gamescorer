@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore
+package com.ovcg.dominoscore.presentation.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.ovcg.dominoscore.R
 import com.ovcg.dominoscore.databinding.HomeFragmentBinding
 
 class HomeFragment : Fragment() {

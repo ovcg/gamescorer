@@ -1,7 +1,8 @@
-package com.ovcg.dominoscore.gamescore
+package com.ovcg.dominoscore.domain
 
+import com.ovcg.dominoscore.presentation.gamescore.Game
+import com.ovcg.dominoscore.data.GameScoreRepository
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class GameScoreUseCase(private val repository: GameScoreRepository) {
     suspend fun getLastGames(): Flow<Result<List<Game>>> {

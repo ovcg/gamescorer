@@ -75,6 +75,9 @@ dependencies {
     implementation(Libraries.Core.lifecycle)
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
+    implementation("androidx.room:room-ktx:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
 
     //UI
     implementation(Libraries.UI.coreKtx)
@@ -89,7 +92,6 @@ dependencies {
     testImplementation(Libraries.Test.coreTesting)
     testImplementation(Libraries.Test.junit)
     testImplementation(Libraries.Test.junitExt)
-    testImplementation(Libraries.Test.robolectric)
     testImplementation(Libraries.Test.truth)
     testImplementation(Libraries.Test.mockk)
     testImplementation(Libraries.Test.espresso)

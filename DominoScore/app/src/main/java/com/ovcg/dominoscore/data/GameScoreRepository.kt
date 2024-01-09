@@ -1,5 +1,6 @@
-package com.ovcg.dominoscore.gamescore
+package com.ovcg.dominoscore.data
 
+import com.ovcg.dominoscore.presentation.gamescore.Game
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

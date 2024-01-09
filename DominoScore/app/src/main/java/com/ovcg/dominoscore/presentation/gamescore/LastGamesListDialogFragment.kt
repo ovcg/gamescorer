@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore
+package com.ovcg.dominoscore.presentation.gamescore
 
 import android.content.Context
 import android.graphics.Canvas

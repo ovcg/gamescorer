@@ -31,9 +31,5 @@ object Libraries {
         val truth: String = "androidx.test.ext:truth:${Versions.Test.truth}"
         val mockk: String = "io.mockk:mockk:${Versions.Test.mockk}"
         val espresso: String = "androidx.test.espresso:espresso-core:${Versions.Test.espresso}"
-        val espressoIntents: String =
-            "androidx.test.espresso:espresso-intents:${Versions.Test.espressoIntents}"
-        val robolectric: String = "org.robolectric:robolectric:${Versions.Test.robolectric}"
-        val orchestrator: String = "androidx.test:orchestrator:${Versions.Test.orchestrator}"
     }
 }

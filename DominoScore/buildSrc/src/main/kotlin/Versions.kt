@@ -19,9 +19,6 @@ object Versions {
         val truth: String = "1.5.0"
         val mockk: String = "1.13.8"
         val espresso: String = "3.5.1"
-        val espressoIntents: String = "3.5.1"
-        val robolectric: String = "4.10.3"
-        val orchestrator: String = "1.4.2"
     }
 
     object Core {

@@ -1,7 +1,7 @@
 package com.ovcg.dominoscore.utils
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import com.ovcg.dominoscore.MainActivity
+import com.ovcg.dominoscore.presentation.MainActivity
 import org.junit.Rule
 
 abstract class BaseUITest {
