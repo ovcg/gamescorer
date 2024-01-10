@@ -1,10 +1,10 @@
 package com.ovcg.dominoscore.gamescore
 
-import com.ovcg.dominoscore.presentation.gamescore.Game
+import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import com.ovcg.dominoscore.domain.GameScoreUseCase
 import com.ovcg.dominoscore.presentation.gamescore.GameScoreViewModel
-import com.ovcg.dominoscore.utils.getValueForTest
 import com.ovcg.dominoscore.utils.BaseUnitTest
+import com.ovcg.dominoscore.utils.getValueForTest
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -16,7 +16,7 @@ class GameScoreViewModelShould : BaseUnitTest() {
 
     private var useCase: GameScoreUseCase = mockk()
     private lateinit var viewModel: GameScoreViewModel
-    private val lastGames: List<Game> = mockk()
+    private val lastGames: List<GameWithPlayers> = mockk()
     private val expected = Result.success(lastGames)
     private val exception = RuntimeException("Something went wrong")
     @Test

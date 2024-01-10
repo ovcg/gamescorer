@@ -1,7 +1,7 @@
 package com.ovcg.dominoscore.gamescore
 
-import com.ovcg.dominoscore.presentation.gamescore.Game
-import com.ovcg.dominoscore.data.GameScoreRepository
+import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
+import com.ovcg.dominoscore.data.repository.GameScoreRepository
 import com.ovcg.dominoscore.domain.GameScoreUseCase
 import com.ovcg.dominoscore.utils.BaseUnitTest
 import io.mockk.coEvery
@@ -17,7 +17,7 @@ class GameScoreUseCaseShould : BaseUnitTest() {
 
     private val repository: GameScoreRepository = mockk()
     private val useCase = GameScoreUseCase(repository)
-    private val games: List<Game> = mockk()
+    private val games: List<GameWithPlayers> = mockk()
     private val exception = RuntimeException("Something went wrong")
 
     @Test
@@ -51,11 +51,9 @@ class GameScoreUseCaseShould : BaseUnitTest() {
         runBlocking {
             assertEquals(exception, useCase.getLastGames().first().exceptionOrNull())
         }
-
     }
 
     private fun mockSuccessfulCase() {
         coEvery { repository.getLastGames() } returns flow { emit(Result.success(games)) }
     }
-
 }

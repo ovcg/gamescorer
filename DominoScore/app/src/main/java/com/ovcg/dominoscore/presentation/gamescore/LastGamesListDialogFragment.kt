@@ -1,30 +1,17 @@
 package com.ovcg.dominoscore.presentation.gamescore
 
-import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.text.TextPaint
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import androidx.navigation.fragment.findNavController
 import com.ovcg.dominoscore.databinding.LastGamesListDialogFragmentBinding
-import com.ovcg.dominoscore.databinding.StartFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * TODO: document your custom view class.
- */
+@AndroidEntryPoint
 class LastGamesListDialogFragment : DialogFragment() {
 
     private var _binding: LastGamesListDialogFragmentBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(

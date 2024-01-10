@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ovcg.dominoscore.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class GameScoreFragment : Fragment() {
 
     override fun onCreateView(
