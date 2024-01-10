@@ -6,10 +6,11 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ovcg.dominoscore.data.database.entity.Game
 import com.ovcg.dominoscore.data.database.entity.GamePlayerCrossRef
+import com.ovcg.dominoscore.data.database.entity.GamePlayerWinnerCrossRef
 import com.ovcg.dominoscore.data.database.entity.Player
 
 @Database(
-    entities = [Game::class, Player::class, GamePlayerCrossRef::class],
+    entities = [Game::class, Player::class, GamePlayerCrossRef::class, GamePlayerWinnerCrossRef::class],
     version = 1,
     exportSchema = false
 )
@@ -28,9 +29,7 @@ abstract class GameScoreDatabase : RoomDatabase() {
             // if it is, then create the database
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    GameScoreDatabase::class.java,
-                    "game_database"
+                    context.applicationContext, GameScoreDatabase::class.java, "game_database"
                 ).build()
                 INSTANCE = instance
                 // return instance

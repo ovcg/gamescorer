@@ -11,5 +11,12 @@ data class GameWithPlayers(
         entityColumn = "playerId",
         associateBy = Junction(GamePlayerCrossRef::class)
     )
-    val players: List<Player>
+    val players: List<Player>,
+
+    @Relation(
+        parentColumn = "gameId",
+        entityColumn = "playerId",
+        associateBy = Junction(GamePlayerWinnerCrossRef::class)
+    )
+    val winners: List<Player>,
 )

@@ -7,3 +7,9 @@ class GamePlayerCrossRef (
     val gameId: Long,
     val playerId: Long
 )
+
+@Entity(primaryKeys = ["gameId", "playerId"])
+class GamePlayerWinnerCrossRef (
+    val gameId: Long,
+    val playerId: Long
+)
