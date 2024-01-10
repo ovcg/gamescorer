@@ -18,7 +18,6 @@ class GameScoreRepositoryShould : BaseUnitTest() {
     private val gamesDao: GameScoreDao = mockk()
     private val repository = GameScoreRepositoryImpl(gamesDao)
     private val games: List<GameWithPlayers> = mockk()
-    private val exception = RuntimeException("Something went wrong")
 
     @Test
     fun getListOfLastGamesFromGameDao() {
