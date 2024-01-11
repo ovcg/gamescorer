@@ -10,13 +10,12 @@ import com.ovcg.dominoscore.data.database.entity.GamePlayerCrossRef
 import com.ovcg.dominoscore.data.database.entity.GamePlayerWinnerCrossRef
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import com.ovcg.dominoscore.data.database.entity.Player
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GameScoreDao {
     @Transaction
     @Query("SELECT * FROM Game ORDER BY Game.createdAt")
-    fun getLastGames(): Flow<List<GameWithPlayers>>
+    fun getLastGames(): List<GameWithPlayers>
 
     @Transaction
     @Insert(onConflict = OnConflictStrategy.REPLACE)

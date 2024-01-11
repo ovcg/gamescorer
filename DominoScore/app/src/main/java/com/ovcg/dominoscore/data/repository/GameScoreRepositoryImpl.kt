@@ -1,27 +1,40 @@
 package com.ovcg.dominoscore.data.repository
 
-import com.ovcg.dominoscore.data.database.GameScoreDatabase
+import android.util.Log
+import com.ovcg.dominoscore.data.database.GameScoreDao
+import com.ovcg.dominoscore.data.database.entity.GamePlayerCrossRef
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.single
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class GameScoreRepositoryImpl @Inject constructor(
-    private val db: GameScoreDatabase
+    private val gameScoreDao: GameScoreDao
 ) : GameScoreRepository {
     override suspend fun getLastGames(): Flow<Result<List<GameWithPlayers>>> {
-        return try {
-            val result = db.gameDao().getLastGames()
-            flow {
-                emit(Result.success(result.single()))
-            }.catch {
-                emit(Result.failure(RuntimeException("Something went wrong")))
-            }
-        } catch (e: Exception) {
-            flow {
-                emit(Result.failure(RuntimeException("Something went wrong")))
+        return flow {
+            val result = withContext(Dispatchers.IO) { gameScoreDao.getLastGames() }
+            emit(Result.success(result))
+        }.catch {
+            Log.e("APP_ERROR = ", it.message ?: "IHHHH")
+            emit(Result.failure(RuntimeException("Something went wrong")))
+        }
+    }
+
+    override suspend fun insertGame(gameWithPlayers: GameWithPlayers) {
+        gameScoreDao.apply {
+            insertGame(gameWithPlayers.game)
+            gameWithPlayers.players.forEach { player ->
+                insertPlayer(player)
+                insertGameCrossPlayers(
+                    GamePlayerCrossRef(
+                        gameId = gameWithPlayers.game.gameId,
+                        playerId = player.playerId
+                    )
+                )
             }
         }
     }

@@ -2,7 +2,7 @@ package com.ovcg.dominoscore.presentation.gamescore
 
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import com.ovcg.dominoscore.domain.GameScoreUseCase
-import com.ovcg.dominoscore.presentation.gamescore.GameScoreViewModel
+import com.ovcg.dominoscore.presentation.gamescore.viewmodel.GameScoreViewModel
 import com.ovcg.dominoscore.utils.BaseUnitTest
 import com.ovcg.dominoscore.utils.getValueForTest
 import io.mockk.coEvery

@@ -5,4 +5,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface GameScoreRepository {
     suspend fun getLastGames(): Flow<Result<List<GameWithPlayers>>>
+    suspend fun insertGame(gameWithPlayers: GameWithPlayers)
 }

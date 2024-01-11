@@ -1,6 +1,6 @@
 package com.ovcg.dominoscore.data
 
-import com.ovcg.dominoscore.data.database.GameScoreDatabase
+import com.ovcg.dominoscore.data.database.GameScoreDao
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import com.ovcg.dominoscore.data.repository.GameScoreRepositoryImpl
 import com.ovcg.dominoscore.utils.BaseUnitTest
@@ -8,15 +8,14 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class GameScoreRepositoryShould : BaseUnitTest() {
 
-    private val db: GameScoreDatabase = mockk()
-    private val repository = GameScoreRepositoryImpl(db)
+    private val gameScoreDao: GameScoreDao = mockk()
+    private val repository = GameScoreRepositoryImpl(gameScoreDao)
     private val games: List<GameWithPlayers> = mockk()
 
     @Test
@@ -27,7 +26,7 @@ class GameScoreRepositoryShould : BaseUnitTest() {
             repository.getLastGames()
 
             coVerify(exactly = 1) {
-                db.gameDao().getLastGames()
+                gameScoreDao.getLastGames()
             }
         }
     }
@@ -44,7 +43,7 @@ class GameScoreRepositoryShould : BaseUnitTest() {
     }
 
     private fun mockSuccessfulCase() {
-        coEvery {  db.gameDao().getLastGames() } returns flow { emit(games) }
+        coEvery {  gameScoreDao.getLastGames() } returns games
     }
 
 }

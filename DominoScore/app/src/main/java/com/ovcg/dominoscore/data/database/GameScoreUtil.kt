@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore.utils
+package com.ovcg.dominoscore.data.database
 
 import com.ovcg.dominoscore.data.database.entity.Game
 import com.ovcg.dominoscore.data.database.entity.Player

@@ -73,6 +73,7 @@ dependencies {
     implementation(Libraries.Core.viewmodel)
     implementation(Libraries.Core.livedata)
     implementation(Libraries.Core.lifecycle)
+    implementation("androidx.fragment:fragment-ktx:1.6.2")
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-android-compiler:2.48")
     implementation("androidx.room:room-ktx:2.6.1")

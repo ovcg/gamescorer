@@ -5,15 +5,17 @@ import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import com.ovcg.dominoscore.R
 import com.ovcg.dominoscore.utils.BaseUITest
+import org.hamcrest.Matchers.allOf
 import org.junit.Test
 import org.junit.runner.RunWith
-import com.ovcg.dominoscore.R
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -41,6 +43,9 @@ class StartGameFeature : BaseUITest() {
         onView(withId(R.id.button_last_games))
             .perform(click())
         onView(withText("Últimos jogos"))
+            .check(matches(isDisplayed()))
+        onView(allOf(withId(R.id.tv_game_name), isDescendantOfA(nthChildOf(withId(R.id.rv_last_games), 0))))
+            .check(matches(withText("Game 1")))
             .check(matches(isDisplayed()))
     }
 

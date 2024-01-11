@@ -51,7 +51,7 @@ class GameScoreDatabaseShould : TestCase() {
                 )
             }
 
-            val gameWithPlayers = gameScoreDao.getLastGames().single()
+            val gameWithPlayers = gameScoreDao.getLastGames()
             val gameQueried = gameWithPlayers[0].game
             assertEquals(gameQueried.title, game.title)
         }
