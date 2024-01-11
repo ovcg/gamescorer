@@ -4,12 +4,12 @@ import androidx.room.Entity
 
 @Entity(primaryKeys = ["gameId", "playerId"])
 class GamePlayerCrossRef (
-    val gameId: Long,
-    val playerId: Long
+    val gameId: String,
+    val playerId: String
 )
 
 @Entity(primaryKeys = ["gameId", "playerId"])
 class GamePlayerWinnerCrossRef (
-    val gameId: Long,
-    val playerId: Long
+    val gameId: String,
+    val playerId: String
 )

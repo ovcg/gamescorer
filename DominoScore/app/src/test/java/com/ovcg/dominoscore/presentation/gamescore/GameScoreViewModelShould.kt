@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore.gamescore
+package com.ovcg.dominoscore.presentation.gamescore
 
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import com.ovcg.dominoscore.domain.GameScoreUseCase

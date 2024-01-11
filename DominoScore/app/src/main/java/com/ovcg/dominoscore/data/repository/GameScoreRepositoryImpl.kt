@@ -1,6 +1,6 @@
 package com.ovcg.dominoscore.data.repository
 
-import com.ovcg.dominoscore.data.database.GameScoreDao
+import com.ovcg.dominoscore.data.database.GameScoreDatabase
 import com.ovcg.dominoscore.data.database.entity.GameWithPlayers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -9,11 +9,11 @@ import kotlinx.coroutines.flow.single
 import javax.inject.Inject
 
 class GameScoreRepositoryImpl @Inject constructor(
-    private val gameScoreDao: GameScoreDao
+    private val db: GameScoreDatabase
 ) : GameScoreRepository {
     override suspend fun getLastGames(): Flow<Result<List<GameWithPlayers>>> {
         return try {
-            val result = gameScoreDao.getLastGames()
+            val result = db.gameDao().getLastGames()
             flow {
                 emit(Result.success(result.single()))
             }.catch {

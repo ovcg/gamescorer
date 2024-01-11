@@ -1,4 +1,4 @@
-package com.ovcg.dominoscore.startgame
+package com.ovcg.dominoscore.presentation.startgame
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
