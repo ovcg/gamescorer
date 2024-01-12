@@ -24,16 +24,35 @@ class StartGameFeature : BaseUITest() {
     @Test
     fun displayFieldsAndFillWithPlayersNames() {
         navigateToStartGameScreen()
-        fillFields()
+        fillFieldsWithPlayers()
     }
 
     @Test
     fun navigateToGameScoreAfterFillingTheFields() {
         navigateToStartGameScreen()
-        fillFields()
-        onView(withId(R.id.button_go_to_game_score))
-            .perform(click())
-        onView(withId(R.id.game_score_root))
+        fillFieldsWithPlayers()
+        navigateToGameScoreScreen()
+    }
+
+    @Test
+    fun createGameAfterFillingPlayersFields() {
+        navigateToStartGameScreen()
+
+        fillFieldsWithPlayers()
+
+        navigateToGameScoreScreen()
+
+        validatePlayersFieldsDisplayed()
+    }
+
+    private fun validatePlayersFieldsDisplayed() {
+        onView(withText("Player1"))
+            .check(matches(isDisplayed()))
+        onView(withText("Player2"))
+            .check(matches(isDisplayed()))
+        onView(withText("Player3"))
+            .check(matches(isDisplayed()))
+        onView(withText("Player4"))
             .check(matches(isDisplayed()))
     }
 
@@ -49,19 +68,28 @@ class StartGameFeature : BaseUITest() {
             .check(matches(isDisplayed()))
     }
 
-    private fun fillFields() {
+    private fun fillFieldsWithPlayers() {
         onView(withId(R.id.edt_first_player))
             .check(matches(isDisplayed()))
-            .perform(typeText("Player1")).check(matches(withText("Player1")))
+            .perform(typeText("Player1"))
         onView(withId(R.id.edt_second_player)).check(matches(isDisplayed()))
-            .perform(typeText("Player2")).check(matches(withText("Player2")))
+            .perform(typeText("Player2"))
         onView(withId(R.id.edt_third_player)).check(matches(isDisplayed()))
-            .perform(typeText("Player3")).check(matches(withText("Player3")))
+            .perform(typeText("Player3"))
         onView(withId(R.id.edt_fourth_player)).check(matches(isDisplayed()))
-            .perform(typeText("Player4")).check(matches(withText("Player4")))
+            .perform(typeText("Player4"))
+
+        validatePlayersFieldsDisplayed()
     }
 
     private fun navigateToStartGameScreen() {
         onView(withId(R.id.button_home_start_score)).perform(ViewActions.click())
+    }
+
+    private fun navigateToGameScoreScreen() {
+        onView(withId(R.id.button_go_to_game_score))
+            .perform(click())
+        onView(withId(R.id.game_score_root))
+            .check(matches(isDisplayed()))
     }
 }

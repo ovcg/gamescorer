@@ -34,9 +34,14 @@ class LastGamesListDialogFragment : DialogFragment() {
         _binding = LastGamesListDialogFragmentBinding.inflate(inflater, container, false)
         setupViewModel()
         setupObserver()
-        val gameWithPlayers = GameWithPlayers(GameScoreUtil.createGame(), GameScoreUtil.createPlayers(), listOf())
-        viewModel.createGame(gameWithPlayers)
+        createGameMock()
         return binding.root
+    }
+
+    private fun createGameMock() {
+        val gameWithPlayers =
+            GameWithPlayers(GameScoreUtil.createGame(), GameScoreUtil.createPlayers(), listOf())
+        viewModel.createGame(gameWithPlayers)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
